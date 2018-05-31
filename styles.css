@@ -1,0 +1,16 @@
+.weather__container {
+  display: flex;
+  justify-content: center;
+  border: solid 1px black;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.weather__data {
+  flex: 1;
+}
+
+#location {
+  font-size: 18px;
+  color: red; 
+}

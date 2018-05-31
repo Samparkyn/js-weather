@@ -1,11 +1,21 @@
 document.addEventListener("DOMContentLoaded", startApp)
 
 let coords
+let place
+let temp
+let humidity
+let description
+let windSpeed
 const key = '82ba185207f8f008ede7b8623f332b74'
 const url = `http://api.openweathermap.org/data/2.5/weather?`
 
 function startApp() {
   console.log('App started !')
+  place = document.getElementById('location')
+  temp = document.getElementById('temp')
+  humidity = document.getElementById('humidity')
+  description = document.getElementById('description')
+  windSpeed = document.getElementById('wind')
   getLocation()
 }
 
@@ -27,6 +37,12 @@ fetch(url + `lat=${coords[0]}&lon=${coords[1]}&APPID=${key}`)
   .then((resp) => resp.json())  
   .then(function(data) {
     console.log('data', data)
+    console.log('name', data.name)
+    place.innerHTML = data.name
+    description.innerHTML = data.weather[0].description
+    temp.innerHTML = 'Temperature: ' + data.main.temp
+    humidity.innerHTML = 'Humidity: ' + data.main.humidity
+    windSpeed.innerHTML = 'Wind speed: ' +data.wind.speed
   })
 }
 
